@@ -20,6 +20,14 @@ var retroceder = function() {
 	}
 };
 
+function ocultar(event) {
+	var figureTag = document.getElementsByTagName("figure");
+	for (var i = 0; i < figureTag.length; i++) {
+		figureTag[i].style.display = "none";
+	}
+	var dataFigure = event.target.getAttribute("data-figure");
+	document.getElementById(dataFigure).style.display = "block";
+}
 
 window.onload = function () {
   //header
@@ -34,6 +42,13 @@ window.onload = function () {
       contador = 1;
     }
   });
+	//Esconder Nav después de usar
+	var linkA = document.getElementsByClassName("press");
+	for (var i = 0; i < linkA.length; i++) {
+		linkA[i].onclick = function () {
+			document.getElementById("nav").style.width = "0%";
+		}
+	}
 
   //galeria
   document.getElementById("avanzar").onclick = avanzar;
@@ -41,9 +56,13 @@ window.onload = function () {
 	setInterval(avanzar,4000);
 
 	//productos
-	var productos = document.getElementsByTagName("figure");
-	for (var i = 0; i <= productos.length; i++) {
-		console.log(i)
+	var figureTag = document.getElementsByTagName("figure");
+	for (var i = 0; i < figureTag.length; i++) {
+		figureTag[i].style.display = "none";
 	}
-	console.log(productos);
+	var titulos = document.getElementsByClassName("titulo");
+	for (var i = 0; i < titulos.length; i++) {
+		titulos[i].onclick = ocultar;
+		}
+	document.getElementById("avo").style.display = "block";
 };
