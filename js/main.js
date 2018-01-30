@@ -42,13 +42,6 @@ window.onload = function () {
       contador = 1;
     }
   });
-	//Esconder Nav después de usar
-	var linkA = document.getElementsByClassName("press");
-	for (var i = 0; i < linkA.length; i++) {
-		linkA[i].onclick = function () {
-			document.getElementById("nav").style.width = "0%";
-		}
-	}
 
   //galeria
   document.getElementById("avanzar").onclick = avanzar;
@@ -56,13 +49,20 @@ window.onload = function () {
 	setInterval(avanzar,4000);
 
 	//productos
-	var figureTag = document.getElementsByTagName("figure");
-	for (var i = 0; i < figureTag.length; i++) {
-		figureTag[i].style.display = "none";
-	}
-	var titulos = document.getElementsByClassName("titulo");
-	for (var i = 0; i < titulos.length; i++) {
-		titulos[i].onclick = ocultar;
+	var tamanoVentana = document.body.clientWidth;
+	if (tamanoVentana < 768) {
+		//Esconder Nav después de usar
+		var linkA = document.getElementsByClassName("press");
+		for (var i = 0; i < linkA.length; i++) {
+			linkA[i].onclick = function () {
+				document.getElementById("nav").style.width = "0%";
+			}
 		}
-	document.getElementById("avo").style.display = "block";
+
+		//Esconder productos
+		var titulos = document.getElementsByClassName("titulo");
+		for (var i = 0; i < titulos.length; i++) {
+			titulos[i].onclick = ocultar;
+			}
+	}
 };
