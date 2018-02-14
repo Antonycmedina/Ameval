@@ -46,7 +46,19 @@ window.onload = function () {
   //galeria
   document.getElementById("avanzar").onclick = avanzar;
   document.getElementById("retroceder").onclick = retroceder;
-	setInterval(avanzar,4000);
+
+	var tiempoGaleria = setInterval(avanzar,4000);
+
+	//detener la galeria
+	document.getElementById("pause").onclick = function() {
+    clearTimeout(tiempoGaleria);
+		document.getElementById("pause").style.display ="none";
+		document.getElementById("play").style.display ="block";
+		}
+	document.getElementById("play").onclick = function() {
+			document.getElementById("play").style.display ="none";
+		document.getElementById("pause").style.display ="block";
+			}
 
 	//productos
 	var tamanoVentana = document.body.clientWidth;
